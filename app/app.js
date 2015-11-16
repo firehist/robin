@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ui.router', 'myApp.home', 'myApp.stat']);
+var myApp = angular.module('myApp', ['ui.router', 'myApp.home','myApp.target', 'myApp.stat']);
 
 /* -------------------------------------------------------------
   ROUTES
@@ -46,19 +46,4 @@ myApp.config(function($stateProvider, $urlRouterProvider){
 });
 
 
-myApp.directive('target', TargetDirective);
-function TargetDirective () {
-  return {
-        templateUrl: 'app/components/target/target.directive.html',
-        scope: true,
-        controller: function () {
-          var vm = this;
-          vm.titre = 'directive target';
-        },
-        controllerAs: 'target',
-        // Bind from external scope to controller
-        bindToController: {
-          'target': '='
-        }
-    };
-}
+
