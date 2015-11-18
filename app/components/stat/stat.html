@@ -1,10 +1,11 @@
 <div>
   	<p>
-    	{{stat.titre}}<br />
+    	{{statCtrl.titre}}<br />
+    	<a ng-href="#/stat">stat</a>
     	<a ui-sref=".heat">Heat</a>
-     	<a ui-sref=".point">Point</a>
 	</p> 
 	<div ui-view>
-		<target-directive></target-directive>
+		<div>progression</div>
+		<div>score</div>
 	</div> 
 </div>

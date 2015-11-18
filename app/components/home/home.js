@@ -1,9 +1,8 @@
 angular
-	.module('myApp.home',[])
+	.module('robin.home',[])
 	.controller('homeCtrl', homeCtrl);
 function homeCtrl() {
+	var vm = this;	
 
-  var vm = this;
-  vm.titre = "Page: home";
-  vm.date="1928383";		
+	vm.titre = "Page home";
 }

@@ -1,30 +1,11 @@
 angular
-	.module('myApp.target', [])
-	.directive('delay', function() {
-		return {
-			restrict: 'A',
-			link: function(scope, element, attrs) {
-				for (var i in attrs) {
-					var matches = i.match(/^delay([A-Z].*)/);
-					if (attrs.hasOwnProperty(i) && matches && matches[1]) {
-						(function() {
-							var realName = matches[1].toLowerCase();
-							scope.$watch(attrs[i], function(newValue, oldValue) {
-				        		element.attr(realName, newValue);
-				        	});
-						})();
-						
-					}
-				}
-        	}
-		};		
-	})
+	.module('robin.target', [])
 	.directive('targetDirective', targetDirective);
 
 	function targetDirective(){
 		return {
 		restrict: 'E',
-        templateUrl: 'app/components/target/target.directive.html',
+        templateUrl: 'app/components/target/target.html',
         scope: true,
 		controller: function targetCtrl(){
           	this.titre = 'directive target';
@@ -40,9 +21,9 @@ angular
 			this.zones.push({id:"zone8", pt:8, r:"45", stroke:"#000", fill:"#D15D5C"});
 			this.zones.push({id:"zone9", pt:9, r:"30", stroke:"#000", fill:"#FCFBA9"});
 			this.zones.push({id:"zone10", pt:10, r:"15", stroke:"#000", fill:"#FCFBA9"})
-        },
+        	},
         controllerAs: "targetCtrl",
         
-    };
+    	};
 		
 	}

@@ -1,9 +1,9 @@
-var myApp = angular.module('myApp', ['ui.router', 'myApp.home','myApp.target', 'myApp.stat']);
+var robin = angular.module('robin', ['ui.router', 'robin.home', 'robin.stat', 'robin.target']);
 
 /* -------------------------------------------------------------
   ROUTES
 -----------------------------------------------------------------*/
-myApp.config(function($stateProvider, $urlRouterProvider){
+robin.config(function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise("/home");
 
   // HOME STATES =============================================
@@ -12,39 +12,44 @@ myApp.config(function($stateProvider, $urlRouterProvider){
       url: "/home",
       templateUrl: "app/components/home/home.html",
       controller:"homeCtrl", 
-      controllerAs:"home"
-    })
-
-    .state('home.list', {
-        url: '/list',
-        templateUrl: 'app/components/home/home-list.html',
-        controller: function($scope) {
-            $scope.dogs = ['Bernese', 'Husky', 'Goldendoodle'];
-        }
-    })
-
-    .state('home.paragraph', {
-        url: '/paragraph',
-        template: 'I could sure use a drink right now.'
+      controllerAs:"homeCtrl"
     })
 
 
-    // STATISTIC STATES =============================================
+  // STATISTIC STATES =============================================
    $stateProvider
     .state('stat', {
       url: "/stat",
       templateUrl: "app/components/stat/stat.html",
       controller:"statCtrl", 
-      controllerAs:"stat"
+      controllerAs:"statCtrl"
     })
 
     .state('stat.heat', {
-        url: '/heat',
-        templateUrl: 'app/components/stat/stat-heat.html'
+    url: '/heat',
+    templateUrl: 'app/components/stat/stat-heat.html'
     })
-
 });
 
 
-
-
+angular
+  .module('robin')
+  .directive('delay', function() {
+    return {
+      restrict: 'A',
+      link: function(scope, element, attrs) {
+        for (var i in attrs) {
+          var matches = i.match(/^delay([A-Z].*)/);
+          if (attrs.hasOwnProperty(i) && matches && matches[1]) {
+            (function() {
+              var realName = matches[1].toLowerCase();
+              scope.$watch(attrs[i], function(newValue, oldValue) {
+                    element.attr(realName, newValue);
+                  });
+            })();
+            
+          }
+        }
+          }
+    };    
+  })

@@ -1,10 +1,9 @@
 <div>
   <p>
-    {{home.titre}}<br />
-    {{home.date |date}}<br />
-
-     <a ui-sref=".list">List</a>
-     <a ui-sref=".paragraph">paragraph</a>
+    {{homeCtrl.titre}}<br />
   </p> 
-  <div ui-view></div> 
+  <div ui-view>
+  		<div>progression</div>
+  		<div>classement</div>
+  </div> 
 </div>

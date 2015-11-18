@@ -1,5 +1,5 @@
 angular
-	.module('myApp.stat',[])
+	.module('robin.stat',[])
 	.controller('statCtrl', statCtrl);
 function statCtrl() {
 
