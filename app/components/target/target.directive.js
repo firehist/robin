@@ -6,11 +6,17 @@ angular
 		return {
 			restrict: 'E',
 	        templateUrl: 'app/components/target/target.html',
-	        scope: true,
-			controller: function targetCtrl(){
+	        scope:{
+	        	mode: '@',
+	        	points: '@'
+	        },
+
+			controller: function targetCtrl($scope){
 
 				var vm = this;
+
 	          	vm.titre = 'target none';
+
 	          	vm.zones=[];
 				vm.zones.push({id:"zone0", pt:0, r:"400", stroke:"#fff", fill:"#eee"});
 				vm.zones.push({id:"zone1", pt:1, r:"150", stroke:"#000", fill:"#fff"});
@@ -22,13 +28,14 @@ angular
 				vm.zones.push({id:"zone7", pt:7, r:"60", stroke:"#000", fill:"#D15D5C"});
 				vm.zones.push({id:"zone8", pt:8, r:"45", stroke:"#000", fill:"#D15D5C"});
 				vm.zones.push({id:"zone9", pt:9, r:"30", stroke:"#000", fill:"#FCFBA9"});
-				vm.zones.push({id:"zone10", pt:10, r:"15", stroke:"#000", fill:"#FCFBA9"})
-	        	
-				vm.heat = function(){
-					vm.titre = "target heat";
-					console.log("klwjflwe");
+				vm.zones.push({id:"zone10", pt:10, r:"15", stroke:"#000", fill:"#FCFBA9"});
+
+				if($scope.mode =="point")
+				{
+					vm.zones.push({id:"zone1", pt:1, r:"10", stroke:"#000", fill:"#ccc"});
 				}
-	        },
+
+		    },
 	        controllerAs: "targetCtrl",
         };	
 	}

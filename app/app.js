@@ -25,9 +25,9 @@ robin.config(function($stateProvider, $urlRouterProvider){
       controllerAs:"statCtrl"
     })
 
-    .state('stat.heat', {
-    url: '/heat',
-    templateUrl: 'app/components/stat/stat-heat.html'
+    .state('stat.point', {
+    url: '/point',
+    templateUrl: 'app/components/stat/stat-point.html'
     })
 });
 
