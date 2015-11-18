@@ -1,0 +1,4 @@
+<p >ma cible: {{targetCtrl.titre}}</p>
+<svg  id="svgCible" height="310px" width="420px">
+	<circle ng-repeat="zone in targetCtrl.zones" id="{{zone.id}}" cx="200" cy="155" delay delay-r="{{zone.r}}" delay-pt="{{zone.pt}}" style="stroke: {{zone.stroke}}; stroke-width: 0.5; fill: {{zone.fill}};">
+</svg>
