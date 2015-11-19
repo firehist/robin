@@ -6,9 +6,11 @@ angular
 		return {
 			restrict: 'E',
 	        templateUrl: 'app/components/target/target.html',
-	        scope:{
-	        	mode: '@',
-	        	points: '@'
+	        scope:{},
+	        bindToController: {
+	        	mode: '=',
+	        	points: '=',
+	        	test: '&'
 	        },
 
 			controller: function targetCtrl($scope){
@@ -30,10 +32,8 @@ angular
 				vm.zones.push({id:"zone9", pt:9, r:"30", stroke:"#000", fill:"#FCFBA9"});
 				vm.zones.push({id:"zone10", pt:10, r:"15", stroke:"#000", fill:"#FCFBA9"});
 
-				if($scope.mode =="point")
-				{
-					vm.zones.push({id:"zone1", pt:1, r:"10", stroke:"#000", fill:"#ccc"});
-				}
+				
+
 
 		    },
 	        controllerAs: "targetCtrl",
