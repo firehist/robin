@@ -1,10 +1,45 @@
 <p >ma cible: {{mode}}</p>
 <svg  id="svgCible" height="310px" width="420px">
 	<g>
-	<circle ng-repeat="zone in targetCtrl.zones" id="{{zone.id}}" cx="200" cy="155" delay delay-r="{{zone.r}}" delay-pt="{{zone.pt}}" style="stroke: {{zone.stroke}}; stroke-width: 0.5; fill: {{zone.fill}};">
+	<circle 
+	ng-repeat="zone in targetCtrl.zones" 
+	id="{{zone.id}}" 
+	cx="200" 
+	cy="155" 
+	delay delay-r="{{zone.r}}" 
+	delay-pt="{{zone.pt}}" 
+	style="stroke: {{zone.stroke}}; stroke-width: 0.5; fill: {{zone.fill}};">
 	</g>
 	<g ng-if="targetCtrl.mode === 'point'">
-		<circle ng-repeat="point in targetCtrl.points" id="{{point.id}}" cx="200" cy="155" delay delay-r="{{point.r}}" delay-pt="{{point.pt}}" style="stroke: {{point.stroke}}; stroke-width: 0.5; fill: {{point.fill}};">
+		<circle 
+		ng-repeat="point in targetCtrl.points" 
+		delay
+		delay-idFleche="{{point.idFleche}}" 
+		delay-cx="{{point.cx}}" 
+		delay-cy="{{point.cy}}"
+		delay-r="5" 
+		delay-pt="{{point.pt}}" 
+		style="stroke:#ccc; stroke-width: 0.5; fill:#ccc;">
 	</g>	
-
 </svg>
+
+<div ng-if="targetCtrl.mode === 'heat'">
+		<div class="heatmap" style="height:400px; width:400px; border:solid black px;"></div>
+</div>
+
+	<script>
+		// minimal heatmap instance configuration
+var heatmap = h337.create({
+  // only container is required, the rest will be defaults
+  container: $(".heatmap"),
+  backgroundColor : red,
+});
+
+heatmap.setData({
+  max: 5,
+  min:0,
+  data: [{ x: 10, y: 15, value: 5}, { x: 14, y: 25, value: 3}]
+});		
+</script>
+
+	
