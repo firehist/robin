@@ -1,9 +1,14 @@
 <html>
     <head>
       <script src="vendors/bower_components/angular/angular.js"></script>
+      <script src="vendors/bower_components/firebase/firebase.js"></script>
+      <script src="vendors/bower_components/angularfire/dist/angularfire.js"></script>
       <script src="vendors/bower_components/heatmap.js-amd/build/heatmap.js"></script>
       <script src="vendors/node_modules/angular-ui-router/release/angular-ui-router.js"></script>
       
+      <script src="app/components/auth/auth.js"></script>
+      <script src="app/components/auth/auth.service.js"></script>
+
       <script src="app/components/home/home.js"></script>
       <script src="app/components/stat/stat.js"></script>
       <script src="app/components/target/target.directive.js"></script>
@@ -11,7 +16,7 @@
       <script src="app/app.js"></script>
     </head>
     <body ng-app="robin">
-    	<a ng-href="#/home">home</a> - <a ng-href="#/stat">stat</a>
+    	<a ng-href="#/home">home</a> - <a ng-href="#/stat">stat</a> - <a ng-href="#/login">login</a>
     	<div ui-view></div>
     </body>
 </html>

@@ -1,10 +1,42 @@
-var robin = angular.module('robin', ['ui.router', 'robin.home', 'robin.stat', 'robin.target']);
+var robin = angular.module('robin', [
+  'ui.router', 
+  'firebase',
+  'robin.auth',
+  'robin.home', 
+  'robin.stat', 
+  'robin.target'
+  ]);
 
 /* -------------------------------------------------------------
   ROUTES
 -----------------------------------------------------------------*/
 robin.config(function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise("/home");
+
+
+    // LOGIN STATES =============================================
+   $stateProvider
+    .state('login', {
+      url: "/login",
+      resolve: {
+          requireNoAuth: function($state, Auth)
+          {
+            return Auth.$requireAuth().then(
+            function(auth)
+            {
+              $state.go('home');
+            }, 
+            function(error)
+            {
+              return;
+            });
+          }
+        },
+      templateUrl: "app/components/auth/login.html",
+      controller:"authCtrl", 
+      controllerAs:"authCtrl"
+    })
+
 
   // HOME STATES =============================================
    $stateProvider
@@ -36,7 +68,9 @@ robin.config(function($stateProvider, $urlRouterProvider){
     })
 });
 
-
+/* -------------------------------------------------------------
+  DIRECTIVE GLOBALE
+-----------------------------------------------------------------*/
 angular
   .module('robin')
   .directive('delay', function() {
@@ -58,3 +92,8 @@ angular
           }
     };    
   })
+
+/* -------------------------------------------------------------
+  CONSTANTES
+-----------------------------------------------------------------*/
+  .constant('FirebaseURL', 'https://dazzling-inferno-8443.firebaseio.com/');
