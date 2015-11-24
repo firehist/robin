@@ -37,6 +37,32 @@ robin.config(function($stateProvider, $urlRouterProvider){
       controllerAs:"authCtrl"
     })
 
+    // LOGOUT STATES =============================================
+   $stateProvider
+    .state('logout', {
+      url: "/logout",
+      templateUrl: "app/components/auth/logout.html",
+      controller:"authCtrl", 
+      controllerAs:"authCtrl"
+    })
+
+    // REGISTER STATES =============================================
+    .state('register', {
+        url: '/register',
+        resolve: {
+          requireNoAuth: function($state, Auth){
+            return Auth.$requireAuth().then(function(auth){
+              $state.go('home');
+            }, function(error){
+              return;
+            });
+          }
+        },
+        templateUrl: "app/components/auth/register.html",
+        controller:"authCtrl", 
+        controllerAs:"authCtrl"
+      });
+
 
   // HOME STATES =============================================
    $stateProvider
@@ -96,4 +122,4 @@ angular
 /* -------------------------------------------------------------
   CONSTANTES
 -----------------------------------------------------------------*/
-  .constant('FirebaseURL', 'https://dazzling-inferno-8443.firebaseio.com/');
+  .constant('FirebaseURL', 'https://robin03.firebaseio.com/');

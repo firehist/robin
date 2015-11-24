@@ -15,7 +15,7 @@ function authCtrl(Auth, $state)
 	{
 		Auth
 			.$authWithPassword(vm.user)
-			.then(function(auth)
+			.then(function (auth)
 			{
 				$state.go('home');
 			}, 
@@ -25,17 +25,19 @@ function authCtrl(Auth, $state)
 			});
 	};
 
-	vm.register = function()
+	vm.register = function (){
+      Auth
+        .$createUser(vm.user)
+        .then(function (user){
+          vm.login();
+        }, function (error){
+          vm.error = error;
+        });
+    };	
+
+	vm.logOut = function()
 	{
-		Auth
-			.$createUser(vm.user)
-			.then(function(user)
-			{
-				vm.login();
-			},
-			function(error)
-			{
-				vm.error = error;
-			});
-	};	
+		Auth.$unauth();
+		$state.go('login');
+	}
 }
