@@ -37,5 +37,23 @@ angular
 
 		    },
 	        controllerAs: "targetCtrl",
+	        
+	        link: function (scope, element, attrs) {
+				setTimeout(function() {
+					// minimal heatmap instance configuration
+					var heatmap = h337.create({
+					  // only container is required, the rest will be defaults
+					  container: $(element).find(".heatmap")[0],
+					  backgroundColor : 'red',
+					});
+
+					heatmap.setData({
+					  max: 5,
+					  min:0,
+					  data: [{ x: 10, y: 15, value: 5}, { x: 14, y: 25, value: 3}]
+					});		
+
+				}, 1000);
+	        }
         };	
 	}
